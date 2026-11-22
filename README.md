@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./client/public/logo.png" width="120" alt="Infinity Classes Logo" />
+</p>
+
 # 🎓 Infinity Classes — Class 10 CBSE Science Online Test Application (MERN)
 
 > A modern, responsive, high-performance online examination and assessment portal tailored for **Infinity Classes (Alpha 1, Greater Noida)**. Built with **MongoDB, Express.js, React, and Node.js (MERN)** for Class 10 CBSE Board Science students (Physics, Chemistry & Biology).
@@ -14,7 +18,7 @@
 ## 🚀 Live Demo & Repository
 
 - **Live Application URL:** [https://infinity-classes-quiz.onrender.com](https://infinity-classes-quiz.onrender.com) *(or your deployed Render URL)*
-- **GitHub Repository:** [https://github.com/viditallen/InfinityClassesAssignment](https://github.com/viditallen/InfinityClassesAssignment)
+- **GitHub Repository:** [https://github.com/VIDIT-13/InfinityClassesAssignment](https://github.com/VIDIT-13/InfinityClassesAssignment)
 
 ### ⚡ Quick Demo Credentials (1-Click Fill available in UI)
 | Role | Email | Password | Access Level |
