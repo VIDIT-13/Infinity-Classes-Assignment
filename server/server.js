@@ -7,7 +7,8 @@ const Question = require('./models/Question');
 const User = require('./models/User');
 const { sampleQuestions } = require('./seeds/seedQuestions');
 
-// Load environment variables
+// Load environment variables from server/.env or root
+dotenv.config({ path: path.join(__dirname, '.env') });
 dotenv.config();
 
 const app = express();

@@ -3,6 +3,8 @@ const dotenv = require('dotenv');
 const Question = require('../models/Question');
 const User = require('../models/User');
 
+const path = require('path');
+dotenv.config({ path: path.join(__dirname, '../.env') });
 dotenv.config();
 
 const sampleQuestions = [
@@ -221,3 +223,4 @@ if (require.main === module) {
 }
 
 module.exports = { sampleQuestions, seedDatabase };
+
