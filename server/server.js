@@ -107,12 +107,16 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Serverless DB connection check for Vercel/serverless environments
-let isDbConnected = false;
+// Ensure DB connection before processing any API request
 app.use(async (req, res, next) => {
-  if (!isDbConnected && process.env.MONGODB_URI) {
-    isDbConnected = await connectDB();
-    if (isDbConnected) await checkAndAutoSeed();
+  if (req.path.startsWith('/api') && req.path !== '/api/health') {
+    const isConnected = await connectDB();
+    if (!isConnected) {
+      return res.status(503).json({
+        success: false,
+        message: 'Database connection failed. Please ensure MongoDB Atlas Network Access allows 0.0.0.0/0 (Access from Anywhere).',
+      });
+    }
   }
   next();
 });
@@ -122,7 +126,6 @@ const PORT = process.env.PORT || 5001;
 const startServer = async () => {
   const isConnected = await connectDB();
   if (isConnected) {
-    isDbConnected = true;
     await checkAndAutoSeed();
   } else {
     console.log('ℹ️  Server starting without MongoDB connection. Provide MONGODB_URI to enable full database operations.');
