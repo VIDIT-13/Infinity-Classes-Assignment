@@ -22,6 +22,25 @@ app.use(
 );
 app.use(express.json());
 
+// Ensure MongoDB connection before processing any data request
+app.use(async (req, res, next) => {
+  if (req.path === '/api/health' || req.path === '/health') {
+    return next();
+  }
+  try {
+    const isConnected = await connectDB();
+    if (!isConnected) {
+      return res.status(503).json({
+        success: false,
+        message: 'Database connection failed. Please ensure MONGODB_URI is set and MongoDB Atlas Network Access allows 0.0.0.0/0.',
+      });
+    }
+  } catch (err) {
+    console.error('Error connecting to DB in middleware:', err);
+  }
+  next();
+});
+
 // Request logger for dev
 if (process.env.NODE_ENV !== 'production') {
   app.use((req, res, next) => {
@@ -30,17 +49,17 @@ if (process.env.NODE_ENV !== 'production') {
   });
 }
 
-// Routes
-app.use('/api/auth', require('./routes/authRoutes'));
-app.use('/api/questions', require('./routes/questionRoutes'));
-app.use('/api/test', require('./routes/testRoutes'));
+// Routes (supports both /api/* and /* for flexible deployment on Vercel services)
+app.use(['/api/auth', '/auth'], require('./routes/authRoutes'));
+app.use(['/api/questions', '/questions'], require('./routes/questionRoutes'));
+app.use(['/api/test', '/test'], require('./routes/testRoutes'));
 
 // Health check endpoint
-app.get('/api/health', (req, res) => {
+app.get(['/api/health', '/health'], (req, res) => {
   res.status(200).json({
     status: 'healthy',
     timestamp: new Date().toISOString(),
-    service: 'Mini Online Test App API',
+    service: 'Infinity Classes CBSE Online Test API',
   });
 });
 
@@ -105,20 +124,6 @@ app.use((err, req, res, next) => {
     success: false,
     message: err.message || 'Internal server error occurred',
   });
-});
-
-// Ensure DB connection before processing any API request
-app.use(async (req, res, next) => {
-  if (req.path.startsWith('/api') && req.path !== '/api/health') {
-    const isConnected = await connectDB();
-    if (!isConnected) {
-      return res.status(503).json({
-        success: false,
-        message: 'Database connection failed. Please ensure MongoDB Atlas Network Access allows 0.0.0.0/0 (Access from Anywhere).',
-      });
-    }
-  }
-  next();
 });
 
 const PORT = process.env.PORT || 5001;
