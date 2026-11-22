@@ -42,15 +42,19 @@ export const Navbar = () => {
           to="/"
           className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 rounded-lg p-1"
         >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 via-indigo-500 to-purple-400 flex items-center justify-center shadow-lg shadow-brand-500/25 group-hover:scale-105 transition-transform duration-200">
-            <Sparkles className="w-5 h-5 text-white animate-pulse" />
+          <div className="w-11 h-11 rounded-xl bg-slate-950/80 border border-slate-800 p-1 flex items-center justify-center shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform duration-200 overflow-hidden">
+            <img
+              src="/logo.png"
+              alt="Infinity Classes Logo"
+              className="w-full h-full object-contain"
+            />
           </div>
           <div>
-            <span className="text-lg font-bold tracking-tight bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent">
-              Infinity<span className="text-brand-400">Quiz</span>
+            <span className="text-lg font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">
+              Infinity<span className="text-amber-400">Classes</span>
             </span>
-            <span className="hidden sm:inline-block ml-2 px-2 py-0.5 text-[10px] uppercase tracking-wider font-semibold bg-brand-500/10 text-brand-300 border border-brand-500/20 rounded-full">
-              Portal
+            <span className="hidden sm:inline-block ml-2 px-2 py-0.5 text-[10px] uppercase tracking-wider font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/20 rounded-full">
+              CBSE Class 10
             </span>
           </div>
         </Link>

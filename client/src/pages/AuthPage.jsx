@@ -72,16 +72,18 @@ export const AuthPage = () => {
 
       <div className="w-full max-w-md relative z-10">
         {/* Brand Header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-600 via-indigo-500 to-purple-400 p-0.5 shadow-xl shadow-brand-500/20 mb-3 animate-fade-in">
-            <div className="w-full h-full bg-slate-950 rounded-2xl flex items-center justify-center">
-              <Sparkles className="w-7 h-7 text-brand-400" />
-            </div>
+        <div className="text-center mb-6">
+          <div className="inline-block p-2 rounded-3xl bg-slate-950/80 border border-slate-800 shadow-2xl mb-3 shadow-brand-500/20">
+            <img
+              src="/logo.png"
+              alt="Infinity Classes Logo"
+              className="w-24 h-24 sm:w-28 sm:h-28 object-contain mx-auto drop-shadow-[0_0_25px_rgba(59,130,246,0.35)]"
+            />
           </div>
-          <h1 className="text-3xl font-extrabold tracking-tight text-white">
-            Infinity<span className="text-brand-400">Classes</span>
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+            Infinity<span className="text-amber-400">Classes</span>
           </h1>
-          <p className="text-sm text-slate-400 mt-1">
+          <p className="text-xs sm:text-sm text-slate-400 mt-1">
             Class 10 CBSE Board Science Examination Portal
           </p>
         </div>

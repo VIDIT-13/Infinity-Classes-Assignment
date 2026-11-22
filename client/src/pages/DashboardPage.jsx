@@ -74,17 +74,26 @@ export const DashboardPage = () => {
         <div className="absolute top-0 right-0 w-80 h-80 bg-brand-500/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/15 border border-brand-500/30 text-brand-300 text-xs font-semibold uppercase tracking-wider mb-3">
-              <Sparkles className="w-3.5 h-3.5" />
-              Infinity Classes &bull; CBSE Class 10
+          <div className="flex items-start sm:items-center gap-4">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-slate-950/90 border border-slate-800 p-2 shrink-0 shadow-xl shadow-brand-500/15 hidden xs:flex items-center justify-center">
+              <img
+                src="/logo.png"
+                alt="Infinity Classes"
+                className="w-full h-full object-contain"
+              />
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-              Hello, <span className="text-brand-400">{user?.name}</span> 👋
-            </h1>
-            <p className="text-sm text-slate-400 mt-1 max-w-xl">
-              Ready for your Class 10 CBSE Board Science assessment? Test your conceptual clarity and exam readiness across Physics, Chemistry, and Biology.
-            </p>
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/15 border border-brand-500/30 text-brand-300 text-xs font-semibold uppercase tracking-wider mb-2">
+                <Sparkles className="w-3.5 h-3.5" />
+                Infinity Classes &bull; CBSE Class 10
+              </div>
+              <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                Hello, <span className="text-amber-400">{user?.name}</span> 👋
+              </h1>
+              <p className="text-sm text-slate-400 mt-1 max-w-xl">
+                Ready for your Class 10 CBSE Board Science assessment? Test your conceptual clarity and exam readiness across Physics, Chemistry, and Biology.
+              </p>
+            </div>
           </div>
 
           <button
