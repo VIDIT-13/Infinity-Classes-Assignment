@@ -1,0 +1,16 @@
+{
+  "name": "mini-online-test-app",
+  "version": "1.0.0",
+  "description": "Mini Online Test Application (MERN) - Infinity Classes Assessment",
+  "scripts": {
+    "install-all": "npm --prefix server install && npm --prefix client install",
+    "client": "npm --prefix client run dev",
+    "server": "npm --prefix server run dev",
+    "build": "npm --prefix client run build",
+    "start": "NODE_ENV=production node server/server.js",
+    "seed": "npm --prefix server run seed"
+  },
+  "keywords": ["mern", "mongodb", "express", "react", "nodejs", "quiz", "assessment", "online-test"],
+  "author": "Vidit",
+  "license": "ISC"
+}
