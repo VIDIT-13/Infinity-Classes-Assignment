@@ -107,11 +107,22 @@ app.use((err, req, res, next) => {
   });
 });
 
+// Serverless DB connection check for Vercel/serverless environments
+let isDbConnected = false;
+app.use(async (req, res, next) => {
+  if (!isDbConnected && process.env.MONGODB_URI) {
+    isDbConnected = await connectDB();
+    if (isDbConnected) await checkAndAutoSeed();
+  }
+  next();
+});
+
 const PORT = process.env.PORT || 5001;
 
 const startServer = async () => {
   const isConnected = await connectDB();
   if (isConnected) {
+    isDbConnected = true;
     await checkAndAutoSeed();
   } else {
     console.log('ℹ️  Server starting without MongoDB connection. Provide MONGODB_URI to enable full database operations.');
@@ -122,6 +133,8 @@ const startServer = async () => {
   });
 };
 
-startServer();
+if (!process.env.VERCEL) {
+  startServer();
+}
 
 module.exports = app;
