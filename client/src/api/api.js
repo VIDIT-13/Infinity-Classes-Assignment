@@ -1,4 +1,8 @@
-const API_BASE = '/api';
+const API_BASE =
+  import.meta.env.VITE_API_BASE_URL ||
+  (typeof window !== 'undefined' && window.location.port === '3000'
+    ? 'http://localhost:5001/api'
+    : '/api');
 
 const getHeaders = () => {
   const token = localStorage.getItem('token');
@@ -102,3 +106,4 @@ export const api = {
     return handleResponse(res);
   },
 };
+
