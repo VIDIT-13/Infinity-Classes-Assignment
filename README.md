@@ -18,7 +18,6 @@
 ## 🚀 Live Demo & Repository
 
 - **Live Application URL:** [https://infinity-classes-assignment.vercel.app]
- *(or your deployed Render URL)*
 - **GitHub Repository:** [https://github.com/VIDIT-13/Infinity-Classes-Assignment](https://github.com/VIDIT-13/Infinity-Classes-Assignment)
 
 ### ⚡ Quick Demo Credentials (1-Click Fill available in UI)
