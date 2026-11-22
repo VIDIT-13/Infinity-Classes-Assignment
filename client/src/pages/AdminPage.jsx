@@ -26,7 +26,7 @@ export const AdminPage = () => {
   const [options, setOptions] = useState(['', '', '', '']);
   const [correctOptionIndex, setCorrectOptionIndex] = useState(0);
   const [explanation, setExplanation] = useState('');
-  const [category, setCategory] = useState('Full-Stack Web Development');
+  const [category, setCategory] = useState('Physics — Light: Reflection & Refraction');
   const [difficulty, setDifficulty] = useState('medium');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -181,17 +181,17 @@ export const AdminPage = () => {
                 />
               </div>
 
-              {/* Code Snippet (Optional) */}
+              {/* Equation / Reference (Optional) */}
               <div>
                 <label className="block text-slate-300 font-medium mb-1 flex items-center gap-1.5">
                   <Code className="w-3.5 h-3.5 text-brand-400" />
-                  Code Snippet (Optional)
+                  Formula / Equation / Context (Optional)
                 </label>
                 <textarea
                   rows="2"
                   value={codeSnippet}
                   onChange={(e) => setCodeSnippet(e.target.value)}
-                  placeholder="e.g. useEffect(() => { ... }, []);"
+                  placeholder="e.g. Fe (s) + 2HCl (aq) -> FeCl2 (aq) + H2 (g)"
                   className="w-full font-mono bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-emerald-300 placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-brand-500"
                 />
               </div>
@@ -236,7 +236,7 @@ export const AdminPage = () => {
                     type="text"
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                    placeholder="e.g. React & Frontend"
+                    placeholder="e.g. Chemistry — Chemical Reactions"
                     className="w-full bg-slate-900 border border-slate-700/80 rounded-xl px-3 py-2 text-white placeholder-slate-500"
                   />
                 </div>
@@ -394,3 +394,4 @@ export const AdminPage = () => {
     </div>
   );
 };
+

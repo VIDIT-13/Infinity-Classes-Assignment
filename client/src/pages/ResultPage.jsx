@@ -360,7 +360,7 @@ export const ResultPage = () => {
                   {item.questionText}
                 </h4>
 
-                {/* Optional Code Snippet */}
+                {/* Optional Equation or Context */}
                 {item.codeSnippet && (
                   <div className="mt-3 rounded-xl bg-slate-950 border border-slate-800 p-3 text-xs font-mono text-emerald-300 overflow-x-auto">
                     <code>{item.codeSnippet}</code>
@@ -429,3 +429,4 @@ export const ResultPage = () => {
     </div>
   );
 };
+

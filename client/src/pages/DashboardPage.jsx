@@ -77,14 +77,13 @@ export const DashboardPage = () => {
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/15 border border-brand-500/30 text-brand-300 text-xs font-semibold uppercase tracking-wider mb-3">
               <Sparkles className="w-3.5 h-3.5" />
-              Welcome Back
+              Infinity Classes &bull; CBSE Class 10
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
               Hello, <span className="text-brand-400">{user?.name}</span> 👋
             </h1>
             <p className="text-sm text-slate-400 mt-1 max-w-xl">
-              Ready to test your computer science and web development knowledge?
-              Take the 10-minute assessment to measure your technical proficiency.
+              Ready for your Class 10 CBSE Board Science assessment? Test your conceptual clarity and exam readiness across Physics, Chemistry, and Biology.
             </p>
           </div>
 
@@ -94,7 +93,7 @@ export const DashboardPage = () => {
             className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-brand-600 via-indigo-600 to-purple-600 hover:from-brand-500 hover:to-purple-500 text-white font-bold text-sm shadow-xl shadow-brand-500/30 hover:shadow-brand-500/50 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 shrink-0 disabled:opacity-50"
           >
             <Play className="w-5 h-5 fill-current" />
-            <span>{loadingQuestions ? 'Preparing Questions...' : 'Start 10-Min Test'}</span>
+            <span>{loadingQuestions ? 'Preparing Questions...' : 'Start Class 10 Science Test'}</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
@@ -169,7 +168,7 @@ export const DashboardPage = () => {
           <div className="flex items-center gap-2.5">
             <HelpCircle className="w-5 h-5 text-brand-400" />
             <h2 className="text-lg font-bold text-white tracking-tight">
-              Test Format & Rules
+              Class 10 CBSE Board Exam Guidelines
             </h2>
           </div>
 
@@ -180,10 +179,10 @@ export const DashboardPage = () => {
               </div>
               <div>
                 <h4 className="text-sm font-semibold text-slate-200">
-                  10 Questions
+                  10 Board Questions
                 </h4>
                 <p className="text-xs text-slate-400 mt-1">
-                  Randomly drawn from the question bank spanning MERN stack, JS event loop, CSS, and CS fundamentals.
+                  Covers Class 10 NCERT Science: Chemical Reactions, Acids & Bases, Light, Electricity, Life Processes, and Heredity.
                 </p>
               </div>
             </div>
@@ -194,10 +193,10 @@ export const DashboardPage = () => {
               </div>
               <div>
                 <h4 className="text-sm font-semibold text-slate-200">
-                  10 Minutes Countdown
+                  10-Minute Countdown
                 </h4>
                 <p className="text-xs text-slate-400 mt-1">
-                  A real-time countdown timer is displayed. When the clock hits 00:00, your test auto-submits automatically.
+                  Timed practice builds speed and exam temperament. When the timer reaches 00:00, your test auto-submits automatically.
                 </p>
               </div>
             </div>
@@ -208,10 +207,10 @@ export const DashboardPage = () => {
               </div>
               <div>
                 <h4 className="text-sm font-semibold text-slate-200">
-                  Palette Navigation
+                  Exam Palette & Review
                 </h4>
                 <p className="text-xs text-slate-400 mt-1">
-                  Jump to any question anytime. Use "Mark for Review" to flag tricky questions to revisit before final submission.
+                  Jump to any question with the interactive palette. Flag numericals or tricky questions with "Mark for Review" to double check.
                 </p>
               </div>
             </div>
@@ -222,10 +221,10 @@ export const DashboardPage = () => {
               </div>
               <div>
                 <h4 className="text-sm font-semibold text-slate-200">
-                  Detailed Results
+                  Step-by-Step Solutions
                 </h4>
                 <p className="text-xs text-slate-400 mt-1">
-                  Immediate score analysis with side-by-side correct answers and explanations for every single question.
+                  Instant score evaluation with side-by-side correct options and detailed conceptual explanations based on CBSE marking schemes.
                 </p>
               </div>
             </div>
@@ -309,3 +308,4 @@ export const DashboardPage = () => {
     </div>
   );
 };
+

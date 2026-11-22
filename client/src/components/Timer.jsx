@@ -51,3 +51,4 @@ export const Timer = ({ timeRemaining, totalSeconds = 600 }) => {
     </div>
   );
 };
+

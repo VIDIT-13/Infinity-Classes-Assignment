@@ -18,3 +18,4 @@ router.post('/', protect, requireAdmin, createQuestion);
 router.delete('/:id', protect, requireAdmin, deleteQuestion);
 
 module.exports = router;
+

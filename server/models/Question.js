@@ -34,7 +34,7 @@ const questionSchema = new mongoose.Schema(
     },
     category: {
       type: String,
-      default: 'Full-Stack Web Development',
+      default: 'Class 10 CBSE Science',
       trim: true,
     },
     difficulty: {
@@ -49,3 +49,4 @@ const questionSchema = new mongoose.Schema(
 );
 
 module.exports = mongoose.model('Question', questionSchema);
+

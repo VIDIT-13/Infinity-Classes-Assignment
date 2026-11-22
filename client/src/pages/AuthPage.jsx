@@ -82,7 +82,7 @@ export const AuthPage = () => {
             Infinity<span className="text-brand-400">Classes</span>
           </h1>
           <p className="text-sm text-slate-400 mt-1">
-            Online Examination & Assessment Portal
+            Class 10 CBSE Board Science Examination Portal
           </p>
         </div>
 
@@ -265,9 +265,10 @@ export const AuthPage = () => {
 
         {/* Footer Note */}
         <p className="text-center text-xs text-slate-500 mt-6">
-          Infinity Classes Mini Test App &bull; Powered by MERN Stack
+          Infinity Classes &bull; Alpha 1, Greater Noida &bull; Learn Beyond Limits
         </p>
       </div>
     </div>
   );
 };
+

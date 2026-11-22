@@ -270,3 +270,4 @@ export const HistoryPage = () => {
     </div>
   );
 };
+

@@ -184,12 +184,12 @@ export const TestPage = () => {
               {currentQuestion.questionText}
             </h2>
 
-            {/* Optional Code Snippet */}
+            {/* Optional Chemical / Physics / Math Equation or Diagram */}
             {currentQuestion.codeSnippet && (
               <div className="mt-4 rounded-2xl bg-slate-950 border border-slate-800 overflow-hidden text-xs">
                 <div className="px-4 py-1.5 bg-slate-900 border-b border-slate-800 flex items-center gap-2 text-slate-400">
                   <Code className="w-3.5 h-3.5 text-brand-400" />
-                  <span className="font-mono text-[11px]">Code Snippet</span>
+                  <span className="font-mono text-[11px]">Equation / Formula Context</span>
                 </div>
                 <pre className="p-4 overflow-x-auto text-emerald-300 font-mono leading-relaxed">
                   <code>{currentQuestion.codeSnippet}</code>
@@ -339,3 +339,4 @@ export const TestPage = () => {
     </div>
   );
 };
+

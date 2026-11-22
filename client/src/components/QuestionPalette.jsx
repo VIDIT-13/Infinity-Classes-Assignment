@@ -94,3 +94,4 @@ export const QuestionPalette = ({
     </div>
   );
 };
+

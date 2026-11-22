@@ -12,3 +12,4 @@ router.get('/history', protect, getStudentHistory);
 router.get('/attempt/:id', protect, getAttemptById);
 
 module.exports = router;
+

@@ -1,165 +1,181 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const path = require('path');
 const Question = require('../models/Question');
 const User = require('../models/User');
 
-const path = require('path');
 dotenv.config({ path: path.join(__dirname, '../.env') });
 dotenv.config();
 
+// Authentic Class 10 CBSE Board Science Questions (Physics, Chemistry, Biology)
 const sampleQuestions = [
   {
-    questionText: 'Which lifecycle method or hook in React is used to perform side effects such as data fetching or subscriptions?',
-    codeSnippet: 'useEffect(() => {\n  fetchData();\n}, []);',
-    options: ['useState', 'useEffect', 'useMemo', 'useReducer'],
-    correctOptionIndex: 1,
-    explanation: 'useEffect is specifically designed in React functional components to manage side-effects, API calls, event listeners, and cleanup timers.',
-    category: 'React & Frontend',
-    difficulty: 'easy',
-  },
-  {
-    questionText: 'What is the purpose of the MongoDB `_id` field in every document?',
-    codeSnippet: '{\n  "_id": ObjectId("64bf..."),\n  "name": "Student"\n}',
+    questionText: 'When dilute hydrochloric acid (HCl) is added to granulated iron filings in a test tube, which gas is produced along with iron(II) chloride?',
+    codeSnippet: 'Fe (s) + 2HCl (aq) ──> FeCl2 (aq) + H2 (g) ↑',
     options: [
-      'It acts as an optional timestamp for records',
-      'It is an immutable primary key uniquely identifying documents',
-      'It encrypts document fields automatically',
-      'It is required only when establishing database relationships',
-    ],
-    correctOptionIndex: 1,
-    explanation: 'In MongoDB, every document requires an immutable `_id` field that functions as the primary key. If not provided during insert, MongoDB generates a 12-byte ObjectId automatically.',
-    category: 'MongoDB & Databases',
-    difficulty: 'easy',
-  },
-  {
-    questionText: 'In Express.js, what does calling `next()` inside a custom middleware function do?',
-    codeSnippet: 'const logger = (req, res, next) => {\n  console.log(req.path);\n  next();\n};',
-    options: [
-      'Immediately sends the HTTP response to the client',
-      'Passes execution control to the next middleware or route handler in the pipeline',
-      'Restarts the Express application worker process',
-      'Rolls back the current database transaction',
-    ],
-    correctOptionIndex: 1,
-    explanation: 'Calling next() hands off execution to the next matching middleware or route handler in the Express stack. Omitting next() hangs the request unless a response is sent.',
-    category: 'Node.js & Express',
-    difficulty: 'medium',
-  },
-  {
-    questionText: 'What will be the output of the following JavaScript snippet due to event loop queue priorities?',
-    codeSnippet: 'console.log("A");\nsetTimeout(() => console.log("B"), 0);\nPromise.resolve().then(() => console.log("C"));\nconsole.log("D");',
-    options: ['A, B, C, D', 'A, D, B, C', 'A, D, C, B', 'D, A, C, B'],
-    correctOptionIndex: 2,
-    explanation: 'Synchronous statements run first ("A", "D"). Then microtasks like Promise callbacks run before macrotasks (setTimeout), resulting in "C" before "B". Final output: A, D, C, B.',
-    category: 'JavaScript Core',
-    difficulty: 'medium',
-  },
-  {
-    questionText: 'In React, what is the key difference between `useCallback` and `useMemo`?',
-    codeSnippet: 'const memoizedFn = useCallback(fn, deps);\nconst memoizedVal = useMemo(() => compute(a), [a]);',
-    options: [
-      'useCallback memoizes a function instance; useMemo memoizes the computed return value',
-      'useCallback only runs on server-side rendering',
-      'useMemo can only be used with primitive numbers and booleans',
-      'There is no technical difference; they are aliases',
+      'Hydrogen gas and iron chloride are produced',
+      'Chlorine gas and iron hydroxide are produced',
+      'No chemical reaction takes place',
+      'Iron salt and water only are produced',
     ],
     correctOptionIndex: 0,
-    explanation: 'useCallback(fn, deps) caches a function instance across renders to prevent unnecessary re-creations, while useMemo(() => fn(), deps) caches the computed result value of an expensive calculation.',
-    category: 'React & Frontend',
+    explanation: 'Active metals like iron react with dilute mineral acids to liberate hydrogen gas and form corresponding metal salts. Fe + 2HCl → FeCl2 + H2↑.',
+    category: 'Chemistry — Chemical Reactions & Equations',
+    difficulty: 'easy',
+  },
+  {
+    questionText: 'Which of the following chemical compounds does NOT contain water of crystallization in its chemical formula?',
+    codeSnippet: 'Blue Vitriol: CuSO4·5H2O | Washing Soda: Na2CO3·10H2O | Gypsum: CaSO4·2H2O',
+    options: [
+      'Blue vitriol (Copper sulphate)',
+      'Baking soda (Sodium hydrogen carbonate)',
+      'Washing soda (Sodium carbonate decahydrate)',
+      'Gypsum (Calcium sulphate dihydrate)',
+    ],
+    correctOptionIndex: 1,
+    explanation: 'Baking soda formula is NaHCO3 and does not contain water of crystallization. Blue vitriol is CuSO4·5H2O, Washing soda is Na2CO3·10H2O, and Gypsum is CaSO4·2H2O.',
+    category: 'Chemistry — Acids, Bases & Salts',
     difficulty: 'medium',
   },
   {
-    questionText: 'Which HTTP status code should a RESTful API return when a client request fails due to missing or invalid authentication credentials?',
-    codeSnippet: 'HTTP/1.1 ___ Unauthorized\nWWW-Authenticate: Bearer realm="Access to API"',
-    options: ['400 Bad Request', '401 Unauthorized', '403 Forbidden', '404 Not Found'],
-    correctOptionIndex: 1,
-    explanation: 'HTTP 401 Unauthorized indicates that the request lacks valid authentication credentials. 403 Forbidden means the server recognizes identity but refuses authorization.',
-    category: 'Web Architecture',
+    questionText: 'Which metal exists in liquid state at standard room temperature, and which non-metal exhibits metallic lustre?',
+    codeSnippet: 'Atomic Symbols: Hg (Hydrargyrum), I (Iodine), Br (Bromine), Ga (Gallium)',
+    options: [
+      'Mercury (metal) and Iodine (non-metal)',
+      'Bromine (metal) and Carbon (non-metal)',
+      'Gallium (metal) and Sulphur (non-metal)',
+      'Sodium (metal) and Phosphorus (non-metal)',
+    ],
+    correctOptionIndex: 0,
+    explanation: 'Mercury (Hg) is the only metal that is liquid at room temperature. Iodine (I) is a non-metal that displays a distinct metallic lustre.',
+    category: 'Chemistry — Metals & Non-Metals',
     difficulty: 'easy',
   },
   {
-    questionText: 'What is the primary role of a JSON Web Token (JWT) signature?',
-    codeSnippet: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEyMyJ9.SIGNATURE',
+    questionText: 'What is the general formula for the homologous series of Alkenes containing one double covalent bond between carbon atoms?',
+    codeSnippet: 'Examples: Ethene (C2H4), Propene (C3H6), Butene (C4H8)',
     options: [
-      'To encrypt the payload so client cannot read JSON data',
-      'To verify that the sender of the JWT is who it says it is and ensure message integrity',
-      'To compress the token string to reduce HTTP header size',
-      'To automatically expire MongoDB session cookies',
+      'CnH2n+2',
+      'CnH2n',
+      'CnH2n-2',
+      'CnH2n+1',
     ],
     correctOptionIndex: 1,
-    explanation: 'The JWT signature is calculated using header, payload, and a secret key. It guarantees that the payload has not been tampered with or modified in transit.',
-    category: 'Web Security',
+    explanation: 'Alkanes have general formula CnH2n+2, Alkenes have CnH2n, and Alkynes have CnH2n-2 (where n is the number of carbon atoms).',
+    category: 'Chemistry — Carbon & Its Compounds',
+    difficulty: 'easy',
+  },
+  {
+    questionText: 'Where should an object be placed in front of a concave mirror to obtain an inverted, real image of the exact same size as the object?',
+    codeSnippet: 'Magnification m = -v / u = -1 (Real & Inverted)',
+    options: [
+      'At the principal focus (F)',
+      'At the centre of curvature (C)',
+      'Between the principal focus and pole',
+      'Beyond the centre of curvature',
+    ],
+    correctOptionIndex: 1,
+    explanation: 'When an object is placed at the centre of curvature (C) of a concave spherical mirror, the image is formed at C itself. The image is real, inverted, and equal in size (m = -1).',
+    category: 'Physics — Light: Reflection & Refraction',
     difficulty: 'medium',
   },
   {
-    questionText: 'In Node.js, what is the role of the Libuv library?',
-    codeSnippet: 'fs.readFile("test.txt", (err, data) => {\n  /* async I/O */\n});',
+    questionText: 'A ray of light enters from air into a glass slab with refractive index n = 1.50. What is the speed of light inside the glass? (Speed of light in vacuum c = 3 × 10⁸ m/s)',
+    codeSnippet: 'Refractive Index formula: n = c / v  =>  v = c / n',
     options: [
-      'Compiles TypeScript directly to machine code',
-      'Provides the multi-platform C library supporting asynchronous I/O and the event loop',
-      'Generates CSS stylesheets dynamically for SSR',
-      'Manages WebSocket socket rooms natively',
+      '2.0 × 10⁸ m/s',
+      '1.5 × 10⁸ m/s',
+      '4.5 × 10⁸ m/s',
+      '3.0 × 10⁸ m/s',
     ],
-    correctOptionIndex: 1,
-    explanation: 'Libuv is the multi-platform C support library used by Node.js to implement the event loop, thread pool, async DNS resolution, and non-blocking file/network I/O.',
-    category: 'Node.js & Express',
-    difficulty: 'hard',
-  },
-  {
-    questionText: 'Why should passwords NEVER be stored as plain text or simple MD5 hashes in MongoDB?',
-    codeSnippet: 'const hash = await bcrypt.hash(password, 10);',
-    options: [
-      'MongoDB collections do not support string types longer than 8 characters',
-      'Plaintext and MD5 hashes are vulnerable to rainbow table attacks and credential leaks; salt-and-hashed bcrypt is required',
-      'Browsers automatically reject plain text fields over HTTPS',
-      'Hashed passwords take up zero disk space in BSON format',
-    ],
-    correctOptionIndex: 1,
-    explanation: 'Plaintext passwords pose fatal security risks. MD5 is computationally trivial to crack with modern rainbow tables. Adaptive algorithms with salts like bcrypt protect against brute force.',
-    category: 'Web Security',
-    difficulty: 'easy',
-  },
-  {
-    questionText: 'What does the JavaScript spread operator `...` do when updating state in React?',
-    codeSnippet: 'setUser(prev => ({ ...prev, score: 100 }));',
-    options: [
-      'Directly mutates the original object in memory',
-      'Creates a shallow copy of existing properties while allowing specific fields to be overridden immutably',
-      'Performs deep serialization through JSON stringify',
-      'Converts the object into an indexed array',
-    ],
-    correctOptionIndex: 1,
-    explanation: 'In React, state must never be mutated directly. The spread syntax shallow-copies existing keys into a fresh object reference, allowing safe immutable state updates.',
-    category: 'React & Frontend',
-    difficulty: 'easy',
-  },
-  {
-    questionText: 'In CSS Flexbox, what does `justify-content: space-between;` do?',
-    codeSnippet: '.navbar {\n  display: flex;\n  justify-content: space-between;\n}',
-    options: [
-      'Centers all flex items along the cross axis',
-      'Distributes flex items evenly along the main axis, with the first item on the start edge and the last on the end edge',
-      'Adds equal space around the outside of all flex items',
-      'Forces all flex items to wrap onto the next line',
-    ],
-    correctOptionIndex: 1,
-    explanation: 'space-between puts the first child at the very start, the last child at the very end, and divides all remaining free space equally between the intermediate children.',
-    category: 'Full-Stack Web Development',
-    difficulty: 'easy',
-  },
-  {
-    questionText: 'What is a closure in JavaScript?',
-    codeSnippet: 'function createCounter() {\n  let count = 0;\n  return () => ++count;\n}',
-    options: [
-      'A method that terminates an active browser worker thread',
-      'The combination of a function bundled together with references to its lexical environment',
-      'A syntax error caused by unmatched curly brackets',
-      'A loop that terminates automatically after 100 iterations',
-    ],
-    correctOptionIndex: 1,
-    explanation: 'A closure gives an inner function access to its outer enclosing scope even after the outer function has finished executing.',
-    category: 'JavaScript Core',
+    correctOptionIndex: 0,
+    explanation: 'Speed of light in glass v = c / n = (3.0 × 10⁸ m/s) / 1.50 = 2.0 × 10⁸ m/s.',
+    category: 'Physics — Light: Reflection & Refraction',
     difficulty: 'medium',
+  },
+  {
+    questionText: 'If three electrical resistors of resistance 2 Ω, 3 Ω, and 6 Ω are connected in a parallel combination, what is their equivalent resistance?',
+    codeSnippet: '1 / Req = 1/R1 + 1/R2 + 1/R3 = 1/2 + 1/3 + 1/6',
+    options: [
+      '11 Ω',
+      '1 Ω',
+      '0.5 Ω',
+      '5 Ω',
+    ],
+    correctOptionIndex: 1,
+    explanation: 'In parallel combination: 1/Req = 1/2 + 1/3 + 1/6 = (3 + 2 + 1) / 6 = 6/6 = 1. Therefore, Req = 1 Ω.',
+    category: 'Physics — Electricity',
+    difficulty: 'medium',
+  },
+  {
+    questionText: 'According to Fleming\'s Left-Hand Rule used for electric motors, what do the thumb, forefinger, and middle finger indicate respectively?',
+    codeSnippet: 'Left Hand: Stretch thumb, forefinger, and middle finger mutually perpendicular.',
+    options: [
+      'Direction of Force/Motion, Magnetic Field, and Electric Current',
+      'Direction of Magnetic Field, Current, and Force',
+      'Direction of Electric Current, Force, and Magnetic Field',
+      'Direction of Induced EMF, Magnetic Field, and Motion',
+    ],
+    correctOptionIndex: 0,
+    explanation: 'In Fleming\'s Left-Hand Rule: Thumb represents the direction of Force (Motion) on the conductor, Forefinger points along Magnetic Field, and Middle finger points in the direction of Current.',
+    category: 'Physics — Magnetic Effects of Electric Current',
+    difficulty: 'easy',
+  },
+  {
+    questionText: 'During cellular respiration in humans, the breakdown of pyruvate using oxygen takes place in which cellular organelle?',
+    codeSnippet: 'Pyruvate (3-Carbon) + O2 ──> 6 CO2 + 6 H2O + 38 ATP',
+    options: [
+      'Cytoplasm',
+      'Mitochondria',
+      'Chloroplast',
+      'Endoplasmic Reticulum',
+    ],
+    correctOptionIndex: 1,
+    explanation: 'Glycolysis (glucose to pyruvate) takes place in the cytoplasm. The aerobic breakdown of pyruvate into carbon dioxide, water, and ATP requires oxygen and occurs inside the mitochondria.',
+    category: 'Biology — Life Processes',
+    difficulty: 'easy',
+  },
+  {
+    questionText: 'In the human excretory system, what is the basic structural and microscopic filtration unit of the kidney called?',
+    codeSnippet: 'Bowman\'s Capsule + Glomerulus + Renal Tubule',
+    options: [
+      'Neuron',
+      'Nephron',
+      'Alveolus',
+      'Ureter',
+    ],
+    correctOptionIndex: 1,
+    explanation: 'Nephrons are the structural and functional filtration units of the mammalian kidney. Millions of nephrons filter nitrogenous waste like urea from the bloodstream to produce urine.',
+    category: 'Biology — Life Processes',
+    difficulty: 'easy',
+  },
+  {
+    questionText: 'Which plant hormone synthesized at shoot tips is primarily responsible for cell elongation and phototropic curvature towards light?',
+    codeSnippet: 'Unequal distribution causes differential cell elongation on the shaded side.',
+    options: [
+      'Auxin',
+      'Gibberellin',
+      'Cytokinin',
+      'Abscisic Acid (ABA)',
+    ],
+    correctOptionIndex: 0,
+    explanation: 'Auxins promote cell elongation. When unidirectional sunlight falls on a plant shoot, auxin diffuses to the shaded side, causing faster cell elongation on that side and bending the shoot toward light.',
+    category: 'Biology — Control & Coordination',
+    difficulty: 'medium',
+  },
+  {
+    questionText: 'In Mendel\'s classic monohybrid inheritance experiment between pure tall (TT) and pure dwarf (tt) pea plants, what is the phenotypic ratio in the F2 generation?',
+    codeSnippet: 'F1: Tt (All Tall)  ──Selfing──>  F2: TT, Tt, Tt, tt',
+    options: [
+      '3 : 1 (Tall : Dwarf)',
+      '1 : 2 : 1 (Tall : Hybrid : Dwarf)',
+      '9 : 3 : 3 : 1',
+      '1 : 1',
+    ],
+    correctOptionIndex: 0,
+    explanation: 'The phenotypic ratio in Mendel\'s monohybrid F2 generation is 3 Tall : 1 Dwarf (75% tall, 25% dwarf). The genotypic ratio is 1 TT : 2 Tt : 1 tt (1:2:1).',
+    category: 'Biology — Heredity & Evolution',
+    difficulty: 'easy',
   },
 ];
 
@@ -167,24 +183,20 @@ async function seedDatabase() {
   try {
     const mongoUri =
       process.env.MONGODB_URI ||
-      'mongodb+srv://<username>:<password>@cluster0.mongodb.net/mini-online-test?retryWrites=true&w=majority';
+      'mongodb+srv://viditallen4:YO11Y7a0pVfpXuoq@cluster0.djqlgs9.mongodb.net/mini-online-test?retryWrites=true&w=majority';
 
-    if (!process.env.MONGODB_URI) {
-      console.log('⚠️  No MONGODB_URI found in server/.env. Seeding aborted.');
+    if (!process.env.MONGODB_URI && !mongoUri) {
+      console.log('⚠️  No MONGODB_URI found. Seeding aborted.');
       return;
     }
 
-    await mongoose.connect(mongoUri);
-    console.log('Connected to MongoDB for seeding...');
+    await mongoose.connect(mongoUri, { serverSelectionTimeoutMS: 20000 });
+    console.log('Connected to MongoDB for seeding Class 10 CBSE Science...');
 
-    // Seed questions
-    const existingQuestions = await Question.countDocuments();
-    if (existingQuestions === 0) {
-      await Question.insertMany(sampleQuestions);
-      console.log(`✅ Seeded ${sampleQuestions.length} questions into database.`);
-    } else {
-      console.log(`ℹ️ Database already contains ${existingQuestions} questions.`);
-    }
+    // Replace old questions with Class 10 Science questions
+    await Question.deleteMany({});
+    await Question.insertMany(sampleQuestions);
+    console.log(`✅ Seeded ${sampleQuestions.length} Class 10 CBSE Science questions into database.`);
 
     // Seed Demo Student
     const existingStudent = await User.findOne({ email: 'student@infinity.com' });
@@ -202,7 +214,7 @@ async function seedDatabase() {
     const existingAdmin = await User.findOne({ email: 'admin@infinity.com' });
     if (!existingAdmin) {
       await User.create({
-        name: 'Admin Instructor',
+        name: 'Faculty Instructor',
         email: 'admin@infinity.com',
         password: 'admin123',
         role: 'admin',
@@ -210,7 +222,7 @@ async function seedDatabase() {
       console.log('✅ Created demo admin: admin@infinity.com / admin123');
     }
 
-    console.log('🎉 Seeding completed successfully!');
+    console.log('🎉 Class 10 CBSE Science Seeding completed successfully!');
     process.exit(0);
   } catch (error) {
     console.error('❌ Seeding failed:', error);
@@ -223,4 +235,3 @@ if (require.main === module) {
 }
 
 module.exports = { sampleQuestions, seedDatabase };
-
