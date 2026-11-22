@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { TestProvider } from './context/TestContext';
 import { Navbar } from './components/Navbar';
@@ -13,7 +13,7 @@ import { AdminPage } from './pages/AdminPage';
 
 export function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <AuthProvider>
         <TestProvider>
           <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
@@ -74,7 +74,7 @@ export function App() {
           </div>
         </TestProvider>
       </AuthProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
